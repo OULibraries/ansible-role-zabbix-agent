@@ -25,4 +25,5 @@
     - unixODBC
     - libtool-ltdl
     - zabbix-agent
-    - zabbix
+    - zabbix-sender
+    - zabbix-get
