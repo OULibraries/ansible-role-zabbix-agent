@@ -17,7 +17,7 @@
   replace:
     dest: /etc/zabbix/zabbix_agentd.conf
     regexp: >
-      ^Hostname=Zabbix server$
+      ^(Hostname=Zabbix server)$
     replace: >
       #\1
   notify:
