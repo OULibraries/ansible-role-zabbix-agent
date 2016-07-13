@@ -13,5 +13,12 @@
       ^ServerActive=127\.0\.0\.1$
     replace: >
       ServerActive={{ zabbix_server_host }}
+- name: Configure Zabbix Agent Hostname
+  replace:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    regexp: >
+      ^Hostname=Zabbix server$
+    replace: >
+      #\1
   notify:
     - restart zabbix-agent
