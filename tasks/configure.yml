@@ -1,0 +1,15 @@
+---
+- name: Configure Zabbix Agent Set Server
+  replace:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    regexp: >
+      ^Server=127\.0\.0\.1$
+    replace: >
+      Server={{ zabbix_server_host }}
+- name: Configure Zabbix Agent Set ServerActive
+  replace:
+    dest: /etc/zabbix/zabbix_agentd.conf
+    regexp: >
+      ^ServerActive=127\.0\.0\.1$
+    replace: >
+      ServerActive={{ zabbix_server_host }}
