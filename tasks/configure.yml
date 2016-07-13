@@ -13,3 +13,5 @@
       ^ServerActive=127\.0\.0\.1$
     replace: >
       ServerActive={{ zabbix_server_host }}
+  notify:
+    - restart zabbix-agent
