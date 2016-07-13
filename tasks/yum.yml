@@ -24,4 +24,5 @@
   with_items:
     - unixODBC
     - libtool-ltdl
-    - zabbix-agent 
+    - zabbix-agent
+    - zabbix
