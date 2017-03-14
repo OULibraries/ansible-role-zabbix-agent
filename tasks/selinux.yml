@@ -1,8 +1,29 @@
 ---
-- name: Compile type enforcement into policy package
+- name: Copy SELinux type enforcement
+  copy:
+    src: zabbix_agent_setrlimit.te
+    dest: /tmp/
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Remove SELinux policy package
   command: >
-    checkmodule -M -m -o zabbix_agent_setrlimit.pp zabbix_agent_setrlimit.te
+    semodule -r myapp
+  failed_when: false
+
+- name: Compile SELinux module file
+  command: >
+    checkmodule -M -m -o /tmp/zabbix_agent_setrlimit.mod /tmp/zabbix_agent_setrlimit.te
+
+- name: Build SELinux policy package
+  command: >
+    semodule_package -o /tmp/zabbix_agent_setrlimit.pp -m /tmp/zabbix_agent_setrlimit.mod
 
 - name: Install local selinux policy package for zabbix agent.
   command: >
-    semodule -i zabbix_agent_setrlimit.pp
+    semodule -i /tmp/zabbix_agent_setrlimit.pp
+
+- name: Remove temporary files
+  file: path=/tmp/zabbix_agent_setrlimit.*
+        state=absent

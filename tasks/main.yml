@@ -1,11 +1,25 @@
 ---
 # tasks file for zabbix-agent
+- include: selinux.yml
+  become: true
+  when: (((ansible_distribution == "CentOS") or (ansible_distribution == "RedHat")) and (ansible_distribution_major_version == "7"))
+  tags:
+  - zabbix_agent_selinux
+
 - include: yum.yml
   become: true
   when: (((ansible_distribution == "CentOS") or (ansible_distribution == "RedHat")) and (ansible_distribution_major_version == "7"))
+  tags:
+  - zabbix_agent_yum
+
 - include: configure.yml
   become: true
   when: (((ansible_distribution == "CentOS") or (ansible_distribution == "RedHat")) and (ansible_distribution_major_version == "7"))
+  tags:
+  - zabbix_agent_configure
+
 - include: services.yml
   become: true
   when: (((ansible_distribution == "CentOS") or (ansible_distribution == "RedHat")) and (ansible_distribution_major_version == "7"))
+  tags:
+  - zabbix_agent_services
