@@ -1,0 +1,8 @@
+---
+- name: Compile type enforcement into policy package
+  command: >
+    checkmodule -M -m -o zabbix_agent_setrlimit.pp zabbix_agent_setrlimit.te
+
+- name: Install local selinux policy package for zabbix agent.
+  command: >
+    semodule -i zabbix_agent_setrlimit.pp
