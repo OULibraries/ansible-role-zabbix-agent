@@ -25,5 +25,10 @@
     semodule -i /tmp/zabbix_agent_setrlimit.pp
 
 - name: Remove temporary files
-  file: path=/tmp/zabbix_agent_setrlimit.*
-        state=absent
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  with items:
+    - zabbix_agent_setrlimit.te
+    - zabbix_agent_setrlimit.mod
+    - zabbix_agent_setrlimit.pp
