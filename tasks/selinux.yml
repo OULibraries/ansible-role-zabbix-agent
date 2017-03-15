@@ -28,7 +28,7 @@
   file:
     path: "/tmp/{{ item }}"
     state: absent
-  with items:
+  with_items:
     - zabbix_agent_setrlimit.te
     - zabbix_agent_setrlimit.mod
     - zabbix_agent_setrlimit.pp
