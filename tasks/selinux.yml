@@ -9,7 +9,7 @@
 
 - name: Remove SELinux policy package
   command: >
-    semodule -r myapp
+    semodule -r zabbix_agent_setrlimit
   failed_when: false
 
 - name: Compile SELinux module file
