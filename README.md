@@ -33,7 +33,7 @@ Example Playbook
 License
 -------
 
-TBD
+[MIT](https://github.com/OULibraries/ansible-role-zabbix-agent/blob/master/LICENSE)
 
 Author Information
 ------------------
