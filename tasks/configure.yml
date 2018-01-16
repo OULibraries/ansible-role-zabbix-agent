@@ -22,3 +22,11 @@
       #\1
   notify:
     - restart zabbix-agent
+- name: Create EnableRemoteCommands Conf file
+  file: path=/etc/zabbix/zabbix_agentd.d/remote_commands.conf
+  state: touch
+- name: Ensure EnableRemoteCommands is enabled
+- lineinfile:
+    path: /etc/zabbix/zabbix_agentd.d/remote_commands.conf
+    regexp: '^EnableRemoteCommands='
+    line: 'EnableRemoteCommands=1'
