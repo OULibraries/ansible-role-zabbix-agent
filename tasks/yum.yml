@@ -3,7 +3,7 @@
   yum_repository:
     name: Zabbix
     description: Zabbix Official Repository
-    baseurl: http://repo.zabbix.com/zabbix/3.0/rhel/7/$basearch
+    baseurl: http://repo.zabbix.com/zabbix/4.0/rhel/7/$basearch
     gpgkey: http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
     gpgcheck: yes
     priority: 2
