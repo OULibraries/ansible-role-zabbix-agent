@@ -1,22 +1,11 @@
 ---
-- name: Configure Zabbix Agent Set Server
-  lineinfile:
-    path: /etc/zabbix/zabbix_agentd.conf
-    regexp: '^Server='
-    line: Server= "{{ zabbix_server_host }}"
 
-- name: Configure Zabbix Agent Set ServerActive
-  replace:
-    path: /etc/zabbix/zabbix_agentd.conf
-    regexp: '^ServerActive='
-    line: ServerActive= "{{ zabbix_server_host }}"
-
-- name: Configure Zabbix Agent Hostname
-  replace:
+- name : Configure Zabbix Agent
+  template:
+    src: templates/zabbix_agentd.conf.j2
     dest: /etc/zabbix/zabbix_agentd.conf
-    regexp: >
-      ^(Hostname=Zabbix server)$
-    replace: >
-      #\1
-  notify:
-    - restart zabbix-agent
+    owner: root
+    group: zabbix
+    mode: 0640
+  notify: restart zabbix-agent
+
