@@ -8,24 +8,9 @@
     gpgcheck: yes
     priority: 2
 
-- name: Update SELinux yum packages to latest
-  yum:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - selinux-policy
-    - policycoreutils
-    - selinux-policy-targeted
-    - policycoreutils-python
-    - polkit
-
 - name: Install yum packages
   yum:
     name: "{{ item }}"
     state: latest
   with_items:
-    - unixODBC
-    - libtool-ltdl
     - zabbix-agent
-    - zabbix-sender
-    - zabbix-get
